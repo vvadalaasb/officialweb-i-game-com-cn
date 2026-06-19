@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vvadalaasb.github.io/officialweb-i-game-com-cn/sitemap.xml

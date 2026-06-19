@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>爱游戏 · 页面入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+      background-color: #f9f6f0;
+      color: #2e2b26;
+      line-height: 1.75;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fefcf8;
+      padding: 2.2rem 2rem 2.8rem;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+      color: #362f2a;
+      border-left: 3px solid #b7a48b;
+      padding-left: 1rem;
+    }
+
+    .subhead {
+      font-size: 0.95rem;
+      color: #7a6e63;
+      margin-bottom: 2.2rem;
+      margin-top: 0.2rem;
+      font-style: italic;
+      border-bottom: 1px dashed #dfd5c9;
+      padding-bottom: 0.7rem;
+    }
+
+    .opening {
+      font-size: 1.05rem;
+      margin-bottom: 1.8rem;
+      padding: 0.8rem 0 0.2rem;
+    }
+
+    .opening strong {
+      color: #4f4239;
+      font-weight: 500;
+    }
+
+    .quote-block {
+      background: #f4efe7;
+      padding: 1.2rem 1.6rem;
+      margin: 1.8rem 0 2rem;
+      border-radius: 18px;
+      font-size: 0.98rem;
+      color: #3d3731;
+      border: 1px solid #e6ddd2;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .quote-block i {
+      display: block;
+      margin-top: 0.4rem;
+      color: #73675c;
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin: 2rem 0 1rem 0;
+      color: #3b332d;
+      border-bottom: 1px solid #e2d6c9;
+      padding-bottom: 0.3rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      padding: 0.6rem 0 0.6rem 1.2rem;
+      position: relative;
+      border-bottom: 1px dotted #ebe2d7;
+      font-size: 0.98rem;
+    }
+
+    .feature-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #867768;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .feature-list li strong {
+      font-weight: 500;
+      color: #4d4138;
+    }
+
+    .story-note {
+      margin-top: 2rem;
+      padding: 1.2rem 1.4rem;
+      background: #f6f1ea;
+      border-left: 4px solid #c3b19b;
+      border-radius: 0 16px 16px 0;
+      font-size: 0.96rem;
+    }
+
+    .faq-mini {
+      margin-top: 2.2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #473e36;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #5b5148;
+      padding-left: 0.8rem;
+      border-left: 2px solid #d6cbbc;
+      padding-top: 0.1rem;
+      padding-bottom: 0.1rem;
+      font-size: 0.93rem;
+    }
+
+    .closing {
+      margin-top: 2.5rem;
+      text-align: left;
+      font-size: 0.95rem;
+      border-top: 1px solid #e1d7cb;
+      padding-top: 1.6rem;
+      color: #4f463d;
+    }
+
+    .closing a {
+      color: #3f352d;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #cbbca9;
+      transition: color 0.2s;
+    }
+
+    .closing a:hover {
+      color: #6a5b4b;
+      text-decoration-color: #a3907c;
+    }
+
+    .inline-link {
+      color: #3f352d;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #cbbca9;
+      transition: color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #6a5b4b;
+    }
+
+    @media (max-width: 580px) {
+      body { padding: 1rem 0.8rem; }
+      .container { padding: 1.6rem 1.2rem; }
+      h1 { font-size: 1.6rem; padding-left: 0.7rem; }
+      .quote-block { padding: 1rem 1.2rem; }
+      .feature-list li { padding-left: 1rem; }
+    }
+
+    @media (max-width: 400px) {
+      .container { border-radius: 18px; }
+      h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <h1>爱游戏</h1>
+  <div class="subhead">一个安静的入口，以及一段关于稳定的笔记</div>
+
+  <div class="opening">
+    <strong>有些页面并不需要喧哗。</strong> 它只是在那里，保持一种朴素的可用性——不必许诺什么，也不急于让你做什么。你来了，看到了，然后可以继续做自己的事。这种克制本身，就是信任的基础。
+  </div>
+
+  <div class="quote-block">
+    我们花了很多时间去思考一个入口应该长成什么样。后来发现，最好的入口往往是那种你不会特别注意它，但每次想用的时候它都在的地方。
+    <i>—— 关于页面存在方式的一种观察</i>
+  </div>
+
+  <!-- 承接段落：从稳定性和说明性切入 -->
+  <p style="margin-bottom: 1.2rem; font-size: 0.98rem;">
+    这个页面是 <a href="https://officialweb-i-game.com.cn" class="inline-link">爱游戏</a> 的其中一种介绍形态。它不是广告，也不是花哨的欢迎页，而是一个相对安静的介绍性存在。你可以把它看作一段文字说明，也可以只是简单路过。
+  </p>
+
+  <p style="margin-bottom: 1.6rem; font-size: 0.97rem; color: #4a4139;">
+    对于经常接触各类站点的使用者来说，一个没有弹窗、没有强制关注、没有倒计时跳转的页面，本身就是一种难得的体面。我们想保留这种体面。
+  </p>
+
+  <h2>一些容易被忽略的特点</h2>
+  <ul class="feature-list">
+    <li><strong>结构简单</strong> —— 没有复杂的导航层级，入口即内容。无论从哪一页跳转过来，你看到的始终是一段可读的叙述。</li>
+    <li><strong>排版优先</strong> —— 字号、行距、底色都经过微调，但不追求视觉上的刺激。米白背景加衬线字体，让阅读节奏慢下来。</li>
+    <li><strong>没有冗余的脚本</strong> —— 页面上没有追踪脚本、不请求外部字体、不加载大图片。稳定从最基础的代码开始。</li>
+    <li><strong>链接就是链接</strong> —— 所有的链接都只是链接。指向 <a href="https://officialweb-i-game.com.cn" class="inline-link">爱游戏</a> 的文本就是字面本身，没有夸大，没有紧迫感。</li>
+  </ul>
+
+  <!-- 温和引用块 / 提示框 -->
+  <div class="story-note">
+    实际上，我们测试过几种不同的首页方案。有些过于热情，有些又太冷淡。最后留下来的这个版本，更像是一个朋友递过来的纸条——上面写了些关于「爱游戏」的基本事实，然后你可以决定下一步怎么做。
+  </div>
+
+  <!-- FAQ 摘要（简略） -->
+  <div class="faq-mini">
+    <h2 style="margin-top: 0;">几个简短的回答</h2>
+    <div class="faq-item">
+      <div class="faq-q">这个页面是做什么的？</div>
+      <div class="faq-a">它是一个介绍性质的页面，对「爱游戏」进行相对完整的文字说明，同时保持入口的直达性。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">为什么设计得这么朴素？</div>
+      <div class="faq-a">朴素本身就是一种选择。我们希望任何人在任何时候打开这个页面，都不会觉得被冒犯或被打扰。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">链接可靠吗？</div>
+      <div class="faq-a">所有链接均直接指向 <a href="https://officialweb-i-game.com.cn" class="inline-link">爱游戏</a> 的域名，不经过中间跳转或短链服务。</div>
+    </div>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="closing">
+    所以，这就是这个页面的全部。它不打算说服你什么，也不想占据你太多时间。如果你感兴趣，随时可以通过上面的链接去看看 <a href="https://officialweb-i-game.com.cn" class="inline-link">爱游戏</a>；如果不感兴趣，关掉页面就好。边界清晰，彼此自在。
+  </div>
+
+</div>
+</body>
+</html>
