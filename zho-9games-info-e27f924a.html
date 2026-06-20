@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轻游之间 · 九游</title>
+  <style>
+    /* 全局重置 & 基础 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f9fe;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 0 1.25rem;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 0 3rem;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 0 1.5rem;
+      border-bottom: 1px solid #d9e6f2;
+    }
+
+    .nav-brand {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #0f4c5c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #148f77;
+    }
+
+    /* Hero */
+    .hero {
+      margin: 2.5rem 0 2.8rem;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #0b3b42;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .hero .sub {
+      margin-top: 0.75rem;
+      font-size: 1.1rem;
+      color: #3d5a6c;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #e0f2f1;
+      color: #146356;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      border: 1px solid #b2dfdb;
+    }
+
+    /* 介绍段落 */
+    .intro {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 4px 12px rgba(20, 90, 80, 0.04);
+      margin-bottom: 2.8rem;
+      border-left: 4px solid #2b9c8b;
+    }
+
+    .intro p {
+      margin-bottom: 1.2rem;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro a {
+      color: #117a6e;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .intro a:hover {
+      color: #0b5c52;
+    }
+
+    /* 网格卡片 — 三个场景模块 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.2rem 0 2.8rem;
+    }
+
+    .scene-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 8px 22px rgba(0, 60, 60, 0.05);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid #e3f0ed;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(20, 110, 90, 0.08);
+    }
+
+    .scene-card .emoji-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      color: #0b4b4a;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #2f4b5c;
+    }
+
+    /* 常见说明 (FAQ 风格) */
+    .faq-section {
+      background: #f0f7f9;
+      border-radius: 24px;
+      padding: 2rem 2.2rem 1.8rem;
+      margin: 2rem 0 2.6rem;
+      border: 1px solid #d3e4e8;
+    }
+
+    .faq-section h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #094c4c;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.2px;
+    }
+
+    .faq-item {
+      margin-bottom: 1.3rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #1e4052;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #2a4a5a;
+      font-size: 0.95rem;
+    }
+
+    .faq-item .highlight-link a {
+      color: #117a6e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+
+    .faq-item .highlight-link a:hover {
+      color: #08574a;
+    }
+
+    /* 小提示 / 额外卡片 */
+    .tip-badge {
+      background: white;
+      border-radius: 40px;
+      padding: 0.8rem 1.6rem;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #155a5a;
+      border: 1px solid #b8d8d4;
+      margin-top: 0.5rem;
+    }
+
+    .extra-note {
+      background: #e3f0ed;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0 1.2rem;
+      color: #1b4a4a;
+    }
+
+    .extra-note a {
+      color: #0f6b5e;
+      text-decoration: underline;
+    }
+
+    /* 页脚 */
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid #d3e4e8;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #5a707a;
+    }
+
+    footer a {
+      color: #0f6b5e;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .scene-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .top-nav {
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .intro {
+        padding: 1.5rem;
+      }
+      .faq-section {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0 0.8rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <span class="nav-brand">◈ 轻游</span>
+      <div class="nav-links">
+        <a href="#">首页</a>
+        <a href="#">场景</a>
+        <a href="#">指南</a>
+        <a href="#">关于</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>游戏 · 日常 · 松弛感</h1>
+      <p class="sub">在碎片时间里找到属于你的节奏，不局促，不仓促。</p>
+      <span class="tagline">从一个小游戏开始 ｜ 九游</span>
+    </div>
+
+    <!-- 介绍段落 (核心介绍 + 链接嵌入) -->
+    <div class="intro">
+      <p>每天都有那么一刻，想放下手头的事情，找一个简单又好玩的东西。不管是排队、通勤还是睡前，游戏不一定是大制作的才有趣。对我而言，<a href="https://zho-9games.com">九游</a>正好提供了这样一种选择——页面干净、类型丰富，从解谜到模拟经营，随便点进去就能玩上几分钟。</p>
+      <p>我不太喜欢那些需要注册、绑定、看广告才让继续的游戏。这里的大部分内容无需折腾，打开即用。有时候朋友问我最近在玩什么，我第一反应就是推荐<a href="https://zho-9games.com">九游</a>，因为上面确实能找到一些冷门但耐玩的东西。而且整个站点的风格很统一，没有弹窗轰炸，也没有夸张的诱导按钮。</p>
+      <p>也许你只想找个地方随便点点，或者想安安静静消磨一段零碎时间——那么这个页面所指向的方向，值得你记住这个名字。</p>
+    </div>
+
+    <!-- 三个场景模块 网格卡片 -->
+    <div class="scene-grid">
+      <div class="scene-card">
+        <span class="emoji-icon">☕</span>
+        <h3>通勤间隙</h3>
+        <p>地铁、公交、等待咖啡的几分钟。不用动脑的放置类或者消除小游戏，刚刚好填满那些空白。划几下屏幕，下一站也就到了。</p>
+      </div>
+      <div class="scene-card">
+        <span class="emoji-icon">🛋️</span>
+        <h3>沙发时刻</h3>
+        <p>周末下午，窝在沙发里不想动。找一款画风舒服的模拟经营游戏，种田、布置房间、管理小店，轻松又治愈。</p>
+      </div>
+      <div class="scene-card">
+        <span class="emoji-icon">📖</span>
+        <h3>阅读换脑</h3>
+        <p>看文章或学习半小时后，切换一下状态。一局文字解谜或轻度策略游戏，既不让大脑完全宕机，又算是一种积极的休息。</p>
+      </div>
+    </div>
+
+    <!-- 常见说明 (FAQ) -->
+    <div class="faq-section">
+      <h2>一些可能你想知道的</h2>
+
+      <div class="faq-item">
+        <strong>这些游戏需要下载安装吗？</strong>
+        <p>绝大多数都是基于浏览器的，不需要额外下载或占用存储空间。打开页面即玩，非常适合临时起意。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>内容是否适合所有年龄段？</strong>
+        <p>平台上的游戏偏向休闲、益智和模拟类，整体风格明快，没有过于激烈或复杂的设定。基本可以放心探索。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>我该如何找到更多这类游戏？</strong>
+        <p>直接收藏 <span class="highlight-link"><a href="https://zho-9games.com">九游</a></span> 就好，上面一直有新的游戏更新。你也可以根据标签筛选自己喜欢的类型。</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>页面在手机上体验好吗？</strong>
+        <p>经过适配，移动端浏览很顺畅。卡片布局和按钮大小都是按照触控习惯调整的，不必放大或缩小。</p>
+      </div>
+    </div>
+
+    <!-- 小提示区块 额外信息 -->
+    <div class="extra-note">
+      <span>💡</span> 如果你喜欢安静、低门槛的游戏体验，不妨从<a href="https://zho-9games.com">九游</a>的首页随机挑一款试试。很多时候惊喜就藏在那些不起眼的列表里。
+    </div>
+
+    <!-- 一个轻巧的装饰提示 -->
+    <div style="text-align: center; margin: 1.2rem 0;">
+      <span class="tip-badge">◈ 不赶时间 · 玩得轻松</span>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+      <p>© 2025 · 轻游笔记 · 内容仅供参考，游戏体验以实际为准</p>
+      <p style="margin-top: 0.3rem; opacity: 0.7;">发现 · <a href="https://zho-9games.com">九游</a>  ·  不打扰的乐趣</p>
+    </footer>
+  </div>
+</body>
+</html>
