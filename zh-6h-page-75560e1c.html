@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料整理与索引 · 6合彩</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafaf9;
+            color: #1e1e1e;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            padding: 2.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        /* 主视觉 —— 极简留白卡片 */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.8rem 2rem 2.4rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+            margin-bottom: 2.8rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            color: #18181b;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #6b6b6b;
+            max-width: 460px;
+            margin: 0 auto 1.4rem;
+            border-top: 1px solid #ececec;
+            padding-top: 1.2rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #3a3a3a;
+            line-height: 1.7;
+        }
+
+        .hero p a {
+            color: #2463eb;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .hero p a:hover {
+            border-bottom-color: #2463eb;
+        }
+
+        /* 用途卡片区域 */
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #efefef;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 450;
+            margin-bottom: 0.7rem;
+            color: #18181b;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .card h2::before {
+            content: "·";
+            color: #a0a0a0;
+            font-weight: 300;
+            margin-right: 0.15rem;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #3d3d3d;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #b0b0b0;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #f2f2f1;
+            color: #3b3b3b;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            margin-right: 0.4rem;
+            margin-top: 0.2rem;
+        }
+
+        /* 适合人群 —— 简洁列表 */
+        .audience {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.8rem 2rem;
+            border: 1px solid #efefef;
+            margin-bottom: 2.8rem;
+        }
+
+        .audience h2 {
+            font-size: 1.25rem;
+            font-weight: 450;
+            color: #18181b;
+            margin-bottom: 0.9rem;
+        }
+
+        .audience h2::before {
+            content: "·";
+            color: #a0a0a0;
+            font-weight: 300;
+            margin-right: 0.3rem;
+        }
+
+        .audience-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.4rem;
+        }
+
+        .audience-items span {
+            background: #f6f6f5;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #2b2b2b;
+        }
+
+        /* 自然链接段落 */
+        .link-note {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.8rem 2rem;
+            border: 1px solid #efefef;
+            margin-bottom: 2.8rem;
+        }
+
+        .link-note h3 {
+            font-size: 1.1rem;
+            font-weight: 450;
+            color: #18181b;
+            margin-bottom: 0.6rem;
+        }
+
+        .link-note p {
+            font-size: 0.95rem;
+            color: #3d3d3d;
+            margin-bottom: 0.8rem;
+        }
+
+        .link-note a {
+            color: #2463eb;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(36, 99, 235, 0.25);
+            transition: border-color 0.2s;
+        }
+
+        .link-note a:hover {
+            border-bottom-color: #2463eb;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem 1.8rem;
+            border: 1px solid #efefef;
+            margin-bottom: 2rem;
+        }
+
+        .faq-mini h4 {
+            font-size: 1rem;
+            font-weight: 450;
+            color: #18181b;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.3rem;
+            border-bottom: 1px solid #f1f1f1;
+            padding: 0.6rem 0;
+        }
+
+        .faq-mini summary {
+            font-size: 0.9rem;
+            color: #2a2a2a;
+            cursor: pointer;
+            font-weight: 430;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-mini summary::before {
+            content: "›";
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .faq-mini details p {
+            font-size: 0.85rem;
+            color: #505050;
+            margin-top: 0.5rem;
+            padding-left: 0.4rem;
+        }
+
+        /* 页脚 */
+        .footnote {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8f8f8f;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #e8e8e8;
+            margin-top: 0.5rem;
+        }
+
+        .footnote a {
+            color: #7f7f7f;
+            text-decoration: none;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem 1.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card, .audience, .link-note, .faq-mini {
+                padding: 1.4rem 1.2rem 1.6rem;
+            }
+            .audience-items span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉 -->
+    <div class="hero">
+        <h1>索引 · 资料整理</h1>
+        <div class="sub">基于公开信息的内容汇集</div>
+        <p>
+            这里是围绕「六合彩」话题搭建的一份轻量资料索引，从历史规则到玩法说明，再到常见疑问，都作了尽量清晰的梳理。如果你希望系统了解<a href="https://zh-6h.com">6合彩</a>的来龙去脉，这里或许是一个不错的起点。
+        </p>
+    </div>
+
+    <!-- 用途卡片区 -->
+    <div class="cards-grid">
+        <div class="card">
+            <h2>信息卡片 · 规则与背景</h2>
+            <p>每期开奖数字、玩法分类、派彩机制等基础内容，均整理自公开渠道。方便快速查阅，减少零散搜索的时间。</p>
+            <ul>
+                <li>号码范围与特别号码说明</li>
+                <li>常见玩法：二星、三星、四星、特码</li>
+                <li>派彩比例与注数对照（参考历史数据）</li>
+            </ul>
+            <div><span class="tag">规则</span><span class="tag">玩法</span><span class="tag">派彩</span></div>
+        </div>
+
+        <div class="card">
+            <h2>资料档案 · 历史与术语</h2>
+            <p>收录了一些常用的术语解释、开奖历史记录以及概率参考，帮助理解常见的讨论语境。</p>
+            <ul>
+                <li>「连码」「连肖」「自选」等术语释义</li>
+                <li>近几期开奖号码趋势简表</li>
+                <li>注数计算方式与概率简述</li>
+            </ul>
+            <div><span class="tag">术语</span><span class="tag">历史</span><span class="tag">概率</span></div>
+        </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="audience">
+        <h2>适合哪些人阅读</h2>
+        <div class="audience-items">
+            <span>想了解基本规则的初学者</span>
+            <span>需要快速查阅玩法说明的用户</span>
+            <span>对开奖历史感兴趣的研究者</span>
+            <span>希望整理资料索引的爱好者</span>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-note">
+        <h3>关于这份索引</h3>
+        <p>
+            这个页面本身只是一个资料集合，内容均来自公开渠道的整理和归纳。如果你想直接访问更完整的规则说明、历史数据以及常见问题，可以前往 <a href="https://zh-6h.com">6合彩</a> 页面，那里有更细致的分类和最新的信息更新。
+        </p>
+        <p>
+            由于内容会不定期根据公开信息调整，建议偶尔回来看看是否有新的资料补充。索引本身保持简洁，方便你按需取用。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h4>常见疑问摘要</h4>
+        <details>
+            <summary>六合彩的号码范围是多少？</summary>
+            <p>通常为 1 至 49 号，每期开出 6 个基本号码加 1 个特别号码。具体请以官方规则为准。</p>
+        </details>
+        <details>
+            <summary>什么是“特码”？</summary>
+            <p>特码即特别号码，属于独立开出的一个号码，许多玩法会围绕特码进行投注。</p>
+        </details>
+        <details>
+            <summary>资料更新频率如何？</summary>
+            <p>本索引会跟随公开信息不定期修订，没有固定周期，但会尽量保证术语和规则部分的准确性。</p>
+        </details>
+        <details>
+            <summary>是否提供投注建议？</summary>
+            <p>不提供。本页面仅作信息整理，不涉及任何投注引导或预测。</p>
+        </details>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footnote">
+        一份资料索引 · <a href="https://zh-6h.com">6合彩</a> · 内容仅供参考
+    </div>
+</div>
+</body>
+</html>
